@@ -19,7 +19,7 @@
     color: white;
   }
   .calculator {
-    min-width: 320px;
+    min-width: 300px;
     padding: 20px;
     display: flex;
     flex-direction: column;
