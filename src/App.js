@@ -47,21 +47,34 @@ export default function App() {
     if (prev !== "") {
       switch (prev.slice(prev.length - 1)) {
         case "/":
-          setPrev(prev.slice(0, prev.length - 1) / input + e.target.innerText);
+          setPrev(
+            (prev.slice(0, prev.length - 1) * 100) /
+              100 /
+              ((input * 100) / 100) +
+              e.target.innerText
+          );
           setInput("");
           break;
         case "*":
-          setPrev(prev.slice(0, prev.length - 1) * input + e.target.innerText);
+          setPrev(
+            (prev.slice(0, prev.length - 1) * 10 * (input * 10)) / 100 +
+              e.target.innerText
+          );
           setInput("");
           break;
         case "-":
-          setPrev(prev.slice(0, prev.length - 1) - input + e.target.innerText);
+          setPrev(
+            (prev.slice(0, prev.length - 1) * 10 - input * 10) / 10 +
+              e.target.innerText
+          );
           setInput("");
           break;
         case "+":
           setPrev(
-            (+prev.slice(0, prev.length - 1) + +input).toString() +
-              e.target.innerText
+            (
+              (+prev.slice(0, prev.length - 1) * 100 + +input * 100) /
+              100
+            ).toString() + e.target.innerText
           );
           setInput("");
           break;
@@ -80,19 +93,26 @@ export default function App() {
   const equal = (e) => {
     switch (prev.slice(prev.length - 1)) {
       case "/":
-        setInput(prev.slice(0, prev.length - 1) / input);
+        setInput(
+          (prev.slice(0, prev.length - 1) * 100) / 100 / ((input * 100) / 100)
+        );
         setPrev("");
         break;
       case "*":
-        setInput(prev.slice(0, prev.length - 1) * input);
+        setInput((prev.slice(0, prev.length - 1) * 10 * (input * 10)) / 100);
         setPrev("");
         break;
       case "-":
-        setInput(prev.slice(0, prev.length - 1) - input);
+        setInput((prev.slice(0, prev.length - 1) * 10 - input * 10) / 10);
         setPrev("");
         break;
       case "+":
-        setInput((+prev.slice(0, prev.length - 1) + +input).toString());
+        setInput(
+          (
+            (+prev.slice(0, prev.length - 1) * 100 + +input * 100) /
+            100
+          ).toString()
+        );
         setPrev("");
         break;
       case "%":
