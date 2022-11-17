@@ -44,6 +44,37 @@ export default function App() {
       setPrev(input + e.target.innerText);
       setInput("");
     }
+    if (prev !== "") {
+      switch (prev.slice(prev.length - 1)) {
+        case "/":
+          setPrev(prev.slice(0, prev.length - 1) / input + e.target.innerText);
+          setInput("");
+          break;
+        case "*":
+          setPrev(prev.slice(0, prev.length - 1) * input + e.target.innerText);
+          setInput("");
+          break;
+        case "-":
+          setPrev(prev.slice(0, prev.length - 1) - input + e.target.innerText);
+          setInput("");
+          break;
+        case "+":
+          setPrev(
+            (+prev.slice(0, prev.length - 1) + +input).toString() +
+              e.target.innerText
+          );
+          setInput("");
+          break;
+        case "%":
+          setPrev(
+            prev.slice(0, prev.length - 1) * (input / 100) + e.target.innerText
+          );
+          setInput("");
+          break;
+        default:
+          setInput(input);
+      }
+    }
   };
 
   const equal = (e) => {
